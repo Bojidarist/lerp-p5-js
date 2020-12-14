@@ -10,19 +10,19 @@ function drwC(circ) {
 }
 
 function setup() {
-    let canvas = createCanvas(400, 400);
+    let canvas = createCanvas(800, 800);
     canvas.parent('p5-canvas');
 
     noiseSlider = createSlider(0,25,5,0);
-    noiseSlider.position(60, 10);
-    noiseSlider.style('width', '80px');
+    noiseSlider.position(110, 23.5);
+    noiseSlider.style('width', '120px');
 
     interpolationSlider = createSlider(0,1,0.1,0);
-    interpolationSlider.position(300, 10);
-    interpolationSlider.style('width', '80px');
+    interpolationSlider.position(580, 23.5);
+    interpolationSlider.style('width', '160px');
 
-    c1 = { x: 50, y: 150, w: 50, h: 50, setColor: () => { fill(255, 0, 0, 150); } };
-    c2 = { x: 50, y: 250, w: 50, h: 50, setColor: () => { fill(255, 255, 0, 150); } };
+    c1 = { x: 100, y: 300, w: 100, h: 100, setColor: () => { fill(255, 0, 0, 150); } };
+    c2 = { x: 100, y: 500, w: 100, h: 100, setColor: () => { fill(255, 255, 0, 150); } };
 }
   
 function draw() {
@@ -37,20 +37,20 @@ function draw() {
 
     c1.x = linearInterpolation(c1.x, c2.x, interpolationPercent);
 
-    line(0, 200, 400, 200);
+    line(0, 400, 800, 400);
 
     c1.setColor()
     drwC(c1);
     c2.setColor();
     drwC(c2);
 
-    textSize(14);
+    textSize(28);
     fill(255);
-    text('Noise', 10, 18);
-    text('Interpolation', 200, 18);
-    textSize(8);
-    text(noise.toFixed(2), 150, 16);
-    text(interpolationPercent.toFixed(2), 380, 16);
+    text('Noise', 10, 35);
+    text('Interpolation', 380, 35);
+    textSize(20);
+    text(noise.toFixed(2), 250, 34);
+    text(interpolationPercent.toFixed(2), 750, 34);
 }
 
 function linearInterpolation(v1, v2, percent) {
